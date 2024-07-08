@@ -136,7 +136,7 @@ class BoostTrack(object):
         iou_threshold: float = 0.3,
         use_ecc: bool = False,
         use_embedding: bool = False,
-        dlo_boost_coef: float = 0.65,
+        dlo_boost_coef: float = 0.8,
         video_name: Optional[str] = None,
         dataset_name: Optional[str] = None,
         test_dataset: bool = False
