@@ -161,7 +161,8 @@ for frame_number, image_path in enumerate(image_files):
             colorID[obj_id] = (np.random.randint(0, 255), np.random.randint(0, 255), np.random.randint(0, 255))
         color = colorID[obj_id]
         cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
-        #cv2.putText(frame, f'ID: {obj_id}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
+        if(np.abs(x1-x2)>20):
+            cv2.putText(frame, f'ID: {obj_id}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
         #print(f'Tracker bbox (ID {obj_id}): [{x1}, {y1}, {x2}, {y2}]')
     
     # Save the frame with tracked particles
@@ -172,4 +173,4 @@ for frame_number, image_path in enumerate(image_files):
 
 # Save tracked targets to CSV
 tracked_targets_df = pd.DataFrame(tracked_targets, columns=["frame_number", "x1", "y1", "x2", "y2", "obj_id", "score"])
-tracked_targets_df.to_csv("tracked_targets.csv", index=False)
+tracked_targets_df.to_csv("tracked_targets_3.csv", index=False)

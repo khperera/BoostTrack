@@ -6,7 +6,7 @@ from PIL import Image
 from PIL import Image, ImageOps
 # Example dataframe
 
-df = pd.read_csv("./tracked_targets.csv")
+df = pd.read_csv("./tracked_targets_secondpass.csv")
 def round_up_to_even(number):
     return int(np.ceil(number / 2.0) * 2)
 def get_largest_box(df):
@@ -22,7 +22,7 @@ def get_largest_box(df):
         result[id_] = (max_width, max_height)
     return result
 
-def enlarge_box(box, factor=2):
+def enlarge_box(box, factor=20):
     width, height = box
     return int(width * factor), int(height * factor)
 
@@ -85,7 +85,7 @@ largest_boxes = get_largest_box(df)
 #cut_images(df, largest_boxes)
 
 
-particle_id = 32588
+particle_id = 24823
 
 
 selected_dataframe = df[df["obj_id"] == particle_id]
